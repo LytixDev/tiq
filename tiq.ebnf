@@ -1,0 +1,25 @@
+Lexical Tokens:
+    ( ) . : ; + - * /
+
+    digit               ::= "0" | "1" | ... | "9" ;
+    upper               ::= "A" | "B" | ... | "Z" ;
+    lower               ::= "a" | "b" | ... | "z" ;
+
+
+Grammar: (note: not complete)
+    program             ::= ϵ
+                          | definition+ EOF ;
+
+    definition          ::= identifier ":" expression
+                          | expression ;
+
+    expression          ::= "(" binary_expr ")"
+                          | literal ;
+
+    binary_expr         ::= ( "+" | "-" | "*" | "/" ) expression expression ;
+
+    literal             ::= number | identifier ;
+
+    identifier          ::= ( upper | lower )+ ;
+
+    number              ::= digit+ ( "." digit+ )? ;
